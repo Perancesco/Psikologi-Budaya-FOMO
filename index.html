@@ -1,4 +1,4 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -21,18 +21,42 @@ d<!DOCTYPE html>
 
   <header class="site-header" id="site-header">
     <a href="#home" class="brand" aria-label="FoMO home">FO<span>·</span>MO<span class="brand-star">✳</span></a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#definition"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8h.01"/></svg><span>01 / ABOUT</span></a>
-      <a href="#loop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4.8 9A7.5 7.5 0 0 1 18 6.5L20 9M4 17v-5h5m10.2 3A7.5 7.5 0 0 1 6 17.5L4 15"/></svg><span>02 / THE LOOP</span></a>
-      <a href="#culture"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19M16 5.5a3 3 0 0 1 0 5.8M17 13h.5a3.5 3.5 0 0 1 3 3.5V19"/></svg><span>03 / CULTURE</span></a>
-      <a href="#reflection"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l1 2.5 2.5 1-2.5 1L19 23l-1-2.5-2.5-1 2.5-1L19 16Z"/></svg><span>04 / REFLECT</span></a>
-    </nav>
+    <div class="nav-picker" role="group" aria-label="Section navigation pages">
+      <button class="nav-step" id="nav-prev" type="button" aria-label="Previous navigation items" disabled>‹</button>
+      <div class="nav-window">
+        <nav class="desktop-nav" id="desktop-nav" aria-label="All sections">
+          <a href="#definition"><span class="nav-index mono">01</span><span>ABOUT</span></a>
+          <a href="#loop"><span class="nav-index mono">02</span><span>THE LOOP</span></a>
+          <a href="#irl"><span class="nav-index mono">03</span><span>REAL LIFE</span></a>
+          <a href="#psychology"><span class="nav-index mono">04</span><span>WHY FoMO</span></a>
+          <a href="#culture"><span class="nav-index mono">05</span><span>CULTURE</span></a>
+          <a href="#identity"><span class="nav-index mono">06</span><span>IDENTITY</span></a>
+          <a href="#highlight"><span class="nav-index mono">07</span><span>HIGHLIGHTS</span></a>
+          <a href="#recognize"><span class="nav-index mono">08</span><span>CHECK-IN</span></a>
+          <a href="#tips"><span class="nav-index mono">09</span><span>RESET TIPS</span></a>
+          <a href="#reflection"><span class="nav-index mono">10</span><span>REFLECTION</span></a>
+          <a href="#research"><span class="nav-index mono">11</span><span>THE MAKERS</span></a>
+        </nav>
+      </div>
+      <button class="nav-step" id="nav-next" type="button" aria-label="Next navigation items">›</button>
+      <span class="nav-page mono" id="nav-page" aria-live="polite">01–04 / 11</span>
+    </div>
     <a class="header-cta" href="#reflection">TAKE A MOMENT <span>↗</span></a>
     <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#definition"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8h.01"/></svg><span>01 / ABOUT</span></a><a href="#loop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4.8 9A7.5 7.5 0 0 1 18 6.5L20 9M4 17v-5h5m10.2 3A7.5 7.5 0 0 1 6 17.5L4 15"/></svg><span>02 / THE LOOP</span></a><a href="#culture"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19v-1.5A4.5 4.5 0 0 1 8 13h2a4.5 4.5 0 0 1 4.5 4.5V19M16 5.5a3 3 0 0 1 0 5.8M17 13h.5a3.5 3.5 0 0 1 3 3.5V19"/></svg><span>03 / CULTURE</span></a><a href="#reflection"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l1 2.5 2.5 1-2.5 1L19 23l-1-2.5-2.5-1 2.5-1L19 16Z"/></svg><span>04 / REFLECT</span></a>
-  </div>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="All sections">
+    <a href="#definition"><span class="nav-index mono">01</span><span>ABOUT</span></a>
+    <a href="#loop"><span class="nav-index mono">02</span><span>THE LOOP</span></a>
+    <a href="#irl"><span class="nav-index mono">03</span><span>REAL LIFE</span></a>
+    <a href="#psychology"><span class="nav-index mono">04</span><span>WHY FoMO</span></a>
+    <a href="#culture"><span class="nav-index mono">05</span><span>CULTURE</span></a>
+    <a href="#identity"><span class="nav-index mono">06</span><span>IDENTITY</span></a>
+    <a href="#highlight"><span class="nav-index mono">07</span><span>HIGHLIGHTS</span></a>
+    <a href="#recognize"><span class="nav-index mono">08</span><span>CHECK-IN</span></a>
+    <a href="#tips"><span class="nav-index mono">09</span><span>RESET TIPS</span></a>
+    <a href="#reflection"><span class="nav-index mono">10</span><span>REFLECTION</span></a>
+    <a href="#research"><span class="nav-index mono">11</span><span>THE MAKERS</span></a>
+  </nav>
 
   <main>
     <!-- HERO -->

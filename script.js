@@ -422,14 +422,63 @@ $('#clear-reflection').addEventListener('click', () => {
   reflectionInput.focus();
 });
 
-// Lightweight active-section navigation update
-const sectionsForNav = ['definition','loop','culture','reflection'];
-const navLinks = $$('.desktop-nav a');
+// Paginated section navigation: show four destinations at a time.
+const sectionsForNav = [
+  'definition',
+  'loop',
+  'irl',
+  'psychology',
+  'culture',
+  'identity',
+  'highlight',
+  'recognize',
+  'tips',
+  'reflection',
+  'research'
+];
+const navWindow = $('.nav-window');
+const desktopNav = $('#desktop-nav');
+const navPageLabel = $('#nav-page');
+const navPrev = $('#nav-prev');
+const navNext = $('#nav-next');
+const navLinks = $$('#desktop-nav a');
+const mobileNavLinks = $$('#mobile-menu a');
+const navPageSize = 4;
+let navPage = 0;
+
+function updateNavPage(nextPage) {
+  const lastPage = Math.ceil(sectionsForNav.length / navPageSize) - 1;
+  navPage = Math.min(lastPage, Math.max(0, nextPage));
+  const pageWidth = navWindow.clientWidth;
+  const finalPageHasFewerLinks = navPage === lastPage && sectionsForNav.length % navPageSize !== 0;
+  const centeredOffset = finalPageHasFewerLinks ? pageWidth / 8 : 0;
+  desktopNav.style.transform = 'translateX(-' + (pageWidth * navPage - centeredOffset) + 'px)';
+  const firstSection = navPage * navPageSize + 1;
+  const lastSection = Math.min(firstSection + navPageSize - 1, sectionsForNav.length);
+  navPageLabel.textContent = String(firstSection).padStart(2, '0') + '–' + String(lastSection).padStart(2, '0') + ' / ' + sectionsForNav.length;
+  navPrev.disabled = navPage === 0;
+  navNext.disabled = navPage === lastPage;
+}
+
+navPrev.addEventListener('click', () => updateNavPage(navPage - 1));
+navNext.addEventListener('click', () => updateNavPage(navPage + 1));
+window.addEventListener('resize', () => updateNavPage(navPage));
+updateNavPage(0);
+
+// Keep the active section highlighted and reveal its navigation group.
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       const id = entry.target.id;
-      navLinks.forEach(link => link.classList.toggle('current', link.getAttribute('href') === `#${id}`));
+      const targetHref = '#' + id;
+      [...navLinks, ...mobileNavLinks].forEach(link => {
+        const isCurrent = link.getAttribute('href') === targetHref;
+        link.classList.toggle('current', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+      const sectionIndex = sectionsForNav.indexOf(id);
+      if(sectionIndex !== -1) updateNavPage(Math.floor(sectionIndex / navPageSize));
     }
   });
 },{rootMargin:'-40% 0px -50% 0px'});
