@@ -2393,6 +2393,9 @@ textarea:focus-visible {
   object-position: center 38%;
   filter: saturate(0.88);
 }
+.team-card:nth-child(2) .team-portrait {
+  object-position: 68% 38%;
+}
 .team-monogram {
   font: italic 400 clamp(50px, 7vw, 86px) / 1 var(--serif);
   letter-spacing: -0.08em;
